@@ -11,7 +11,9 @@ def generate_answers(question: str, _, file: bytes) -> bool | str:
         if "banana" in locals()["fruits"]:
             return 'The "banana" is not removed from the "fruits" list.'
         elif locals()["fruits"] != ["limon"]:
-            return "There were other modifications to the list not included in the task."
+            return (
+                "There were other modifications to the list not included in the task."
+            )
         return True
     except Exception as e:
         return str(e)
