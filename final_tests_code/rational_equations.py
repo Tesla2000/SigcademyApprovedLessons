@@ -13,6 +13,39 @@ def generate_questions() -> list[str]:
 
     return [
         f"""
+        1. Wypisz elementy dziedziny <!-- Komentarz -->
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mrow>
+                    <mo>(</mo>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>-</mo>
+                    <mn>{first_zero**2}</mn>
+                    <mo>)(</mo>
+                    <mi>{multiplicator}x</mi>
+                    <mo>+</mo>
+                    <mn>{multiplicator*second_zero}</mn>
+                    <mo>)</mo>
+                </mrow>
+                <mrow>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>-</mo>
+                    <mn>{first_zero}</mn>
+                    <mo>)(</mo>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <mn>{zero_out_of_domain}</mn>
+                    <mo>)</mo>
+                </mrow>
+            </mfrac>
+            <mo>= 0</mo>
+        </math>"""
+        f"""
+        2. Rozwiąż równanie <!-- Komentarz -->
     <math xmlns="http://www.w3.org/1998/Math/MathML">
             <mfrac>
                 <mrow>
