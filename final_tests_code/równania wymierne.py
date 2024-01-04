@@ -11,37 +11,7 @@ def generate_questions() -> list[str]:
         if zero_out_of_domain not in (first_zero, second_zero):
             break
     questions = [
-        f"""1. Wypisz liczby poza dziedziną <!-- {first_zero},{-zero_out_of_domain} --><math xmlns="http://www.w3.org/1998/Math/MathML">
-            <mfrac>
-                <mrow>
-                    <mo>(</mo>
-                    <msup>
-                        <mi>x</mi>
-                        <mn>2</mn>
-                    </msup>
-                    <mo>-</mo>
-                    <mn>{first_zero ** 2}</mn>
-                    <mo>)(</mo>
-                    <mi>{multiplicator}x</mi>
-                    <mo>+</mo>
-                    <mn>{multiplicator * second_zero}</mn>
-                    <mo>)</mo>
-                </mrow>
-                <mrow>
-                    <mo>(</mo>
-                    <mi>x</mi>
-                    <mo>-</mo>
-                    <mn>{first_zero}</mn>
-                    <mo>)(</mo>
-                    <mi>x</mi>
-                    <mo>+</mo>
-                    <mn>{zero_out_of_domain}</mn>
-                    <mo>)</mo>
-                </mrow>
-            </mfrac>
-            <mo>= 0</mo>
-        </math>""",
-        f"""2. Rozwiąż równanie <!-- {-first_zero},{-second_zero} --><math xmlns="http://www.w3.org/1998/Math/MathML">
+        f"""1. Rozwiąż równanie <!-- {-first_zero},{-second_zero} --><math xmlns="http://www.w3.org/1998/Math/MathML">
             <mfrac>
                 <mrow>
                     <mo>(</mo>
@@ -79,7 +49,7 @@ def generate_questions() -> list[str]:
     zeros = {first_zero, second_zero, squared_zero, -squared_zero, 0}
     zero_out_of_domain = {-squared_zero, -second_zero, second_zero}
     questions.append(
-        f"""3. Rozwiąż równanie <!-- {','.join(map(str, zeros - zero_out_of_domain))} --><math xmlns="http://www.w3.org/1998/Math/MathML">
+        f"""2. Rozwiąż równanie <!-- {','.join(map(str, zeros - zero_out_of_domain))} --><math xmlns="http://www.w3.org/1998/Math/MathML">
       <mfrac>
         <mrow>
           <mrow>
@@ -138,7 +108,8 @@ def generate_questions() -> list[str]:
           </mrow>
         </mrow>
       </mfrac>
-    </math>=0""")
+      <mo>= 0</mo>
+    </math>""")
     return questions
 
 
