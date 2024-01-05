@@ -11,7 +11,7 @@ def generate_questions() -> list[str]:
         if zero_out_of_domain not in (first_zero, second_zero):
             break
     questions = [
-        f"""1. Rozwiąż równanie <!-- {-first_zero},{-second_zero} --><math xmlns="http://www.w3.org/1998/Math/MathML">
+        f"""1. Rozwiąż równanie <!-- {-first_zero},{-second_zero} --><math xmlns="http://www.w3.org/1998/Math/MathML" style="font-size: 24px;">
             <mfrac>
                 <mrow>
                     <mo>(</mo>
@@ -49,7 +49,7 @@ def generate_questions() -> list[str]:
     zeros = {first_zero, second_zero, squared_zero, -squared_zero, 0}
     zero_out_of_domain = {-squared_zero, -second_zero, second_zero}
     questions.append(
-        f"""2. Rozwiąż równanie <!-- {','.join(map(str, zeros - zero_out_of_domain))} --><math xmlns="http://www.w3.org/1998/Math/MathML">
+        f"""2. Rozwiąż równanie <!-- {','.join(map(str, zeros - zero_out_of_domain))} --><math xmlns="http://www.w3.org/1998/Math/MathML" style="font-size: 24px;">
       <mfrac>
         <mrow>
           <mrow>
