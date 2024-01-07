@@ -1,0 +1,15 @@
+{
+  "html_file": "Wypisz odpowiedź jako licznik/mianownik, gdzie licznik i mianownik pochodzą z ułamka nieskracalnego.",
+  "questions": [
+    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" style=\"font-size: 24px;\">  <mrow>    <mfrac>      <mn>3</mn>      <mn>4</mn>    </mfrac>    <mo>&#8290;&#8290;</mo>    <mo>&#8290;&#8290;</mo>    <mfrac>      <mn>5</mn>      <mn>6</mn>    </mfrac>  </mrow></math>",
+    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" style=\"font-size: 24px;\">  <mrow>    <mfrac>      <mn>2</mn>      <mn>3</mn>    </mfrac>    <mo>&#8290;&#8290;</mo>    <mo>&#8290;&#8290;</mo>    <mn>4</mn>  </mrow></math>",
+    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" style=\"font-size: 24px;\">  <mrow>    <mfrac>      <mn>1</mn>      <mn>2</mn>    </mfrac>    <mo>&#8290;&#8290;</mo>    <mo>&#8290;&#8290;</mo>    <mfrac>      <mn>3</mn>      <mn>5</mn>    </mfrac>  </mrow></math>",
+    "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" style=\"font-size: 24px;\">  <mrow>    <mn>7</mn>    <mo>&#8290;&#8290;</mo>    <mo>&#8290;&#8290;</mo>    <mfrac>      <mn>4</mn>      <mn>5</mn>    </mfrac>  </mrow></math>"
+  ],
+  "answers": [
+    "5/8",
+    "8/3",
+    "3/10",
+    "28/5"
+  ]
+}
