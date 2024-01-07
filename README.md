@@ -12,7 +12,7 @@ Existing and new lessons must be structured in a following way:
 
   - `training_materials/`: Holds training materials.
     - `[lesson_name]/`: Folder containing training materials for specific lesson.
-      - `[author]/`: folder containing training material itself.
+      - `[name]/`: folder containing training material itself.
         - `.json`: file contains information needed for training material creation.
         - `[step_number].json`: file contains information needed for creation of training material step.
         - `[step_number].html`: file html visible to trainee during step training.
@@ -25,7 +25,7 @@ Existing and new lessons must be structured in a following way:
 ```json
 {
   "description": "",
-  "author": "",
+  "author": "",   # an email address of the author
   "basic_requirements": [""]  # lessons required to perform this lesson
 }
 ```
@@ -43,7 +43,7 @@ Existing and new lessons must be structured in a following way:
 ```json
 {
   "expected_step_times": [300],  # expected time of compleation for each step (to provide feedback to oversears)
-  "author": "",
+  "author": "",  # an email address of the author
   "video_path": ""  # video path for final test
 }
 ```
