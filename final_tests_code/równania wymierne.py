@@ -119,5 +119,6 @@ def generate_answers(question: str, answer: str, _: str) -> bool | str:
         if set(map(int, re.findall(r'[-\d]+,[-\d,]+', question)[0].split(','))) == modified_answer:
             return True
         return f"Your answer {answer} is incorrect."
-    except:
+    except Exception as e:
+        print(e)
         return f"Answers must be coma separated. Is {answer}"

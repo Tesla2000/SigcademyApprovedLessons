@@ -72,7 +72,8 @@ def generate_answers(question: str, answer: str, file: str) -> bool | str:
         if iscorrect(question, answer, file):
             return True
         return ""
-    except:
+    except Exception as e:
+print(e)
         return ""
 ```
 
