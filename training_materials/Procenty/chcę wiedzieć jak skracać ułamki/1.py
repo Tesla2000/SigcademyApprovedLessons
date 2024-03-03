@@ -22,7 +22,7 @@ def generate_answers(question: str, answer: str, _: str) -> bool | str:
         else:
             denominator = 1
             nominator = int(numbers)
-        return round(float(re.findall(r'(\d+)%', question)[0]) / 100, 9) == round(nominator / denominator, 9)
+        return round(float(re.findall(r'([\d\.]+)%', question)[0]) / 100, 9) == round(nominator / denominator, 9)
     except Exception as e:
         print(e)
         return False
