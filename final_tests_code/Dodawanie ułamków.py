@@ -9,19 +9,19 @@ def generate_questions() -> list[str]:
       <mrow>
         <mfrac>
           <mrow>
-            <mn>{random.randint(2, 20)}</mn>
+            <mn>{random.randint(2, 9)}</mn>
           </mrow>
           <mrow>
-            <mn>{random.randint(2, 20)}</mn>
+            <mn>{random.randint(2, 9)}</mn>
           </mrow>
         </mfrac>
         <mo>+</mo>
         <mfrac>
           <mrow>
-            <mn>{random.randint(2, 20)}</mn>
+            <mn>{random.randint(2, 9)}</mn>
           </mrow>
           <mrow>
-            <mn>{random.randint(2, 20)}</mn>
+            <mn>{random.randint(2, 9)}</mn>
           </mrow>
         </mfrac>
       </mrow>
