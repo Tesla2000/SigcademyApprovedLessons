@@ -11,7 +11,7 @@ def generate_questions() -> list[str]:
         if zero_out_of_domain not in (first_zero, second_zero):
             break
     questions = [
-        f"""1. Wypisz liczby poza dziedziną <!-- {first_zero},{-zero_out_of_domain} --><math xmlns="http://www.w3.org/1998/Math/MathML" style="font-size: 24px;">
+        f"""<!-- {first_zero},{-zero_out_of_domain} --><math xmlns="http://www.w3.org/1998/Math/MathML" style="font-size: 24px;">
             <mfrac>
                 <mrow>
                     <mo>(</mo>
