@@ -2,6 +2,6 @@
   "description": "W ramach tej lekcji nauczysz się przekształcać procenty na ułamki i odwrotnie.",
   "author": "fratajczak124@gmail.com",
   "basic_requirements": [],
-  "additional_requirements": [],
+  "additional_requirements": ["Ułamki"],
   "section": "Operacje na ułamkach 1"
 }
