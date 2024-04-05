@@ -1,6 +1,7 @@
 {
   "description": "W ramach tej lekcji nauczysz się skracać ułamki.",
   "author": "fratajczak124@gmail.com",
-  "basic_requirements": ["Ułamki"],
+  "basic_requirements": [],
+  "additional_requirements": ["Ułamki"],
   "section": "Operacje na ułamkach 1"
 }

@@ -1,6 +1,7 @@
 {
   "description": "W ramach tej lekcji nauczysz się odejmować ułamki.",
   "author": "fratajczak124@gmail.com",
-  "basic_requirements": ["Skaracanie ułamków"],
+  "basic_requirements": [],
+  "additional_requirements": ["Skaracanie ułamków"],
   "section": "Operacje na ułamkach 1"
 }

@@ -18,7 +18,7 @@ def generate_questions() -> list[str]:
               </mrow>
             </mfrac>
           </mrow>
-        </math>1) """ + ",2) ".join(random.sample((f"(licznik={numerator}, mianownik={denominator})", f"(licznik={denominator}, mianownik={numerator})"), k=2)))
+        </math></br>1) """ + "</br>2) ".join(random.sample((f"(licznik={numerator}, mianownik={denominator})", f"(licznik={denominator}, mianownik={numerator})"), k=2)))
     for _ in range(3):
         numerator, denominator = sorted(random.sample(range(1, 100), k=2), reverse=True)
         fraction = f"""<mn>{numerator // denominator}</mn>
@@ -28,7 +28,8 @@ def generate_questions() -> list[str]:
           </mfrac>""" if random.random() < .5 else f"<mfrac><mn>{numerator}</mn><mn>{denominator}</mn></mfrac>"
         questions.append(f"""Określ czy ułamek jest właściwy czy niewłaściwy <math xmlns="http://www.w3.org/1998/Math/MathML">
         {fraction}
-        </math>1) Właściwy,2) Niewłaściwy""")
+        </math></br>1) Właściwy</br>2) Niewłaściwy""")
+    random.shuffle(questions)
     return questions
 
 

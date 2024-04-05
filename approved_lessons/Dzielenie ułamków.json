@@ -1,6 +1,7 @@
 {
   "description": "W ramach tej lekcji nauczysz się dzielic ułamki.",
   "author": "fratajczak124@gmail.com",
-  "basic_requirements": ["Mnożenie ułamków"],
+  "basic_requirements": [],
+  "additional_requirements": ["Mnożenie ułamków"],
   "section": "Operacje na ułamkach 1"
 }
