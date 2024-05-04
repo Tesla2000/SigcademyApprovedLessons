@@ -1,0 +1,26 @@
+import random
+import langchain_openai
+import langchain_core
+def generate_questions() -> list[str]:
+    questions = ['What is the purpose of the property decorator in Python?', 'How can the property decorator be used to improve the implementation of a class in Python?', 'What are some common methods that can be defined within a property in Python?', 'What is the purpose of using a property in Python?', 'How can the speaker implement a property in Python without using the property decorator?', 'What is a setter in Python?', 'When would the speaker use a setter in Python?', 'What is a deleter in Python?', 'What is the purpose of the cache property in Python?', 'Can the speaker provide an example of implementing a custom cache property in Python?', 'How can the speaker force a cache property to recompute its value in Python?']
+    return random.sample(questions, min(len(questions), 5))
+
+
+def generate_answers(question: str, answer: str, _: str) -> bool | str:
+    reference_answers = dict(zip(['What is the purpose of the property decorator in Python?', 'How can the property decorator be used to improve the implementation of a class in Python?', 'What are some common methods that can be defined within a property in Python?', 'What is the purpose of using a property in Python?', 'How can the speaker implement a property in Python without using the property decorator?', 'What is a setter in Python?', 'When would the speaker use a setter in Python?', 'What is a deleter in Python?', 'What is the purpose of the cache property in Python?', 'Can the speaker provide an example of implementing a custom cache property in Python?', 'How can the speaker force a cache property to recompute its value in Python?'], ['The property decorator in Python is used to customize the behavior of class attributes. It allows the speaker to define getter, setter, and deleter methods for a property, providing control over how the attribute is accessed, set, and deleted.', 'By using the property decorator, the speaker can create computed attributes, validate attribute values, and control access to attributes in a more structured way. This can lead to cleaner and more maintainable code, especially when dealing with complex class structures.', 'Some common methods that can be defined within a property in Python include getter methods to retrieve the attribute value, setter methods to set the attribute value, and deleter methods to delete the attribute. These methods allow the speaker to customize the behavior of the property and perform additional logic when accessing or modifying the attribute.', 'The purpose of using a property in Python is to implement getters and setters for attributes of a class. This allows for computed attributes and controlled access to class properties.', 'You can implement a property in Python without using the property decorator by defining a descriptor class with a `__get__` method that returns the desired attribute value. This allows for custom implementation of getters and setters.', 'A setter is a method that allows the speaker to set the value of a property in a class. It takes the previous property value as an argument and allows the speaker to perform logic before setting the new value.', 'Some common use cases for a setter in Python include input validation, setting multiple properties at the same time, or implementing specific behavior when setting a property value.', 'A deleter is a method that allows the speaker to delete a property in a class. It can be used to define custom behavior when a property is deleted, such as resetting the property to a default value.', 'The cache property in Python is used to store a computed value that is only calculated once and then reused without recomputation. It helps improve performance by avoiding redundant calculations.', 'To implement a custom cache property in Python, the speaker can define a property with a getter method that computes the value and sets it as an attribute on the instance. By setting and accessing the attribute, the speaker can prevent the descriptor from firing and ensure the value is cached for future use.', 'To force a cache property to recompute its value in Python, the speaker can call the `del` method on the property, which will delete the cached value. Subsequent access to the property will trigger the computation again.']))
+    chat = langchain_openai.ChatOpenAI(model="gpt-3.5-turbo-1106", temperature=0)
+    chat_answer = chat.invoke(
+        [
+            langchain_core.messages.SystemMessage(content="You will be given question, reference answer pair and users answer. "
+                                  'You have to decide if the answer is correct. '
+                                  'If it is respond with a single work "Correct" otherwise return a hint about the answer. '),
+            langchain_core.messages.SystemMessage(content='The question: ' + question + '\n'
+                                  'The reference answer: ' + reference_answers[question]),
+            langchain_core.messages.HumanMessage(
+                content=answer
+            )
+        ]
+    ).content
+    if chat_answer.startswith("Correct"):
+        return True
+    return chat_answer

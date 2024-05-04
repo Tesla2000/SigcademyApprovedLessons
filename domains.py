@@ -4,6 +4,9 @@ domain_to_section = {
         "Podstawowe operacje matematyczne 1",
         "Operacje na ułamkach 1",
         "Równania i nierówności 3",
+    ],
+    "Programing": [
+        "anthony explains",
     ]
 }
 

@@ -1,0 +1,26 @@
+import random
+import langchain_openai
+import langchain_core
+def generate_questions() -> list[str]:
+    questions = ['What is the PEP associated with type annotations in Python?', 'What tool was created long ago for type annotations in Python?', 'What is the purpose of type annotations in Python?', 'What syntax was added in Python 3 for annotating function parameters and return types?', 'What module was added in Python 3.5 to make it easier to represent types?', 'What type can be used to represent an optional value in function annotations?', 'When were variable annotations added in Python?', 'What is the purpose of class annotations and local variable annotations in Python?', "What is the 'NamedTuple' class in Python and how is it used for defining classes?", 'What new typing features were introduced in Python 3.9?', "What is 'mypy' in Python and how does it help with type checking?", "How can 'mypy' be used to debug type-related issues in Python code?", 'What is gradual typing in mypy and how does it work?', 'What are the other settings mentioned in the video?', 'What are TypeScript types described as in the video?', 'How do TypeScript types help in writing code according to the video?', "What is the speaker's attitude towards typing in the video?"]
+    return random.sample(questions, min(len(questions), 5))
+
+
+def generate_answers(question: str, answer: str, _: str) -> bool | str:
+    reference_answers = dict(zip(['What is the PEP associated with type annotations in Python?', 'What tool was created long ago for type annotations in Python?', 'What is the purpose of type annotations in Python?', 'What syntax was added in Python 3 for annotating function parameters and return types?', 'What module was added in Python 3.5 to make it easier to represent types?', 'What type can be used to represent an optional value in function annotations?', 'When were variable annotations added in Python?', 'What is the purpose of class annotations and local variable annotations in Python?', "What is the 'NamedTuple' class in Python and how is it used for defining classes?", 'What new typing features were introduced in Python 3.9?', "What is 'mypy' in Python and how does it help with type checking?", "How can 'mypy' be used to debug type-related issues in Python code?", 'What is gradual typing in mypy and how does it work?', 'What are the other settings mentioned in the video?', 'What are TypeScript types described as in the video?', 'How do TypeScript types help in writing code according to the video?', "What is the speaker's attitude towards typing in the video?"], ['PEP 484', 'mypy', 'To provide static type checking and improve code correctness before running it', 'Parameter annotations with colon followed by type name and return type annotations with arrow and type name.', 'The typing module.', 'The optional type from the typing module.', 'Variable annotations were added in Python 3.6.', 'Class annotations and local variable annotations in Python can be used to disambiguate types and provide type hints for classes and variables, helping with type checking and improving code clarity.', "The 'NamedTuple' class in Python allows for the creation of classes with named fields, providing a concise way to define data structures. It was introduced in Python 3.6.", 'In Python 3.9, built-in types now support generics, allowing for the use of standard built-in types without the need for additional imports for type annotations.', 'mypy is a type checker for Python that validates type annotations in code. It helps catch type-related errors and ensures type consistency in Python programs.', "mypy provides a 'reveal type' built-in function that can be used to determine the inferred type of a variable or expression in Python code, helping with debugging type-related issues.", "Gradual typing in mypy means that only functions with type annotations are checked for type consistency, while other functions without annotations are not checked. However, there is an option to enable checking for all code, even if it's not annotated.", 'The other settings were not specified in the text.', 'TypeScript types are described as glorified comments that the speaker can apply a type checker to.', 'TypeScript types help in writing more correct code and make it easier to refactor code.', 'The speaker enjoys typing and hopes that viewers will enjoy it too.']))
+    chat = langchain_openai.ChatOpenAI(model="gpt-3.5-turbo-1106", temperature=0)
+    chat_answer = chat.invoke(
+        [
+            langchain_core.messages.SystemMessage(content="You will be given question, reference answer pair and users answer. "
+                                  'You have to decide if the answer is correct. '
+                                  'If it is respond with a single work "Correct" otherwise return a hint about the answer. '),
+            langchain_core.messages.SystemMessage(content='The question: ' + question + '\n'
+                                  'The reference answer: ' + reference_answers[question]),
+            langchain_core.messages.HumanMessage(
+                content=answer
+            )
+        ]
+    ).content
+    if chat_answer.startswith("Correct"):
+        return True
+    return chat_answer

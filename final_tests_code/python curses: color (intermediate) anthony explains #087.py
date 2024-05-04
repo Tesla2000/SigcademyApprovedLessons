@@ -1,0 +1,26 @@
+import random
+import langchain_openai
+import langchain_core
+def generate_questions() -> list[str]:
+    questions = ['How can the speaker access 256 colors in curses?', 'What is the range of values for the RGB parameters in curses when initializing true colors?', 'What is the hex color value provided?', 'How do the speaker convert a hex color value to a scaled value from 0 to 1000?', 'What is the purpose of the video?', 'What change was made to the curses program from the previous video?', 'How can the speaker set the default colors in curses?', 'How does curses determine the terminal capabilities for color support?', "What global variables in curses provide information about the terminal's color capabilities?", 'What is the purpose of the curses library in Python?', 'What is the function of curses.has_colors() in Python?', 'How do the speaker initialize a color pair in curses?', 'What is the purpose of using color pairs in curses?', 'How many colors can be accessed in the 256 color range if the terminal supports it?', 'What is the difference between true color and 256 color in terminals?', 'What is the purpose of initializing a color pair in curses?', 'How can the speaker use curses.init_pair to change the foreground color only?', 'What is the potential issue with using true colors in curses?']
+    return random.sample(questions, min(len(questions), 5))
+
+
+def generate_answers(question: str, answer: str, _: str) -> bool | str:
+    reference_answers = dict(zip(['How can the speaker access 256 colors in curses?', 'What is the range of values for the RGB parameters in curses when initializing true colors?', 'What is the hex color value provided?', 'How do the speaker convert a hex color value to a scaled value from 0 to 1000?', 'What is the purpose of the video?', 'What change was made to the curses program from the previous video?', 'How can the speaker set the default colors in curses?', 'How does curses determine the terminal capabilities for color support?', "What global variables in curses provide information about the terminal's color capabilities?", 'What is the purpose of the curses library in Python?', 'What is the function of curses.has_colors() in Python?', 'How do the speaker initialize a color pair in curses?', 'What is the purpose of using color pairs in curses?', 'How many colors can be accessed in the 256 color range if the terminal supports it?', 'What is the difference between true color and 256 color in terminals?', 'What is the purpose of initializing a color pair in curses?', 'How can the speaker use curses.init_pair to change the foreground color only?', 'What is the potential issue with using true colors in curses?'], ['By using the curses `init_pair` function with color numbers in the 256 color range.', 'The RGB parameters range from 0 to 1000 instead of the usual 0 to 255.', '1e77d3', 'Multiply by 1000 and integer divide by 255', 'The video is about discussing curses and how to color text in curses.', 'A space was added before typing the name, and a way to exit the program gracefully after typing any character was implemented.', 'You can set the default colors in curses by calling `curses.use_default_colors()`.', 'Curses determines the terminal capabilities for color support by looking at the `TERM` environment variable.', "The global variables `curses.colors` and `curses.color_pairs` provide information about the terminal's color capabilities.", 'The curses library in Python is used for creating text-based user interfaces and handling terminal control and screen painting.', 'The curses.has_colors() function in Python is used to check if the terminal supports color output. It returns a boolean value indicating whether the terminal supports colors.', 'To initialize a color pair in curses, the speaker use the init_pair() function with a numerical value representing the pair number, a foreground color, and a background color. This allows the speaker to set color combinations for text rendering in the terminal.', 'To access colored pairs by their numbers and ensure that the number matches the initialized color pair.', '256 colors.', 'True color is 32-bit color with 24-bit color depth, while 256 color is limited to 8 colors in a 3-bit color depth.', 'To set the foreground and background colors for text rendering', 'Pass -1 for the background color parameter', 'Some terminals may not render true colors correctly, resulting in unexpected color displays']))
+    chat = langchain_openai.ChatOpenAI(model="gpt-3.5-turbo-1106", temperature=0)
+    chat_answer = chat.invoke(
+        [
+            langchain_core.messages.SystemMessage(content="You will be given question, reference answer pair and users answer. "
+                                  'You have to decide if the answer is correct. '
+                                  'If it is respond with a single work "Correct" otherwise return a hint about the answer. '),
+            langchain_core.messages.SystemMessage(content='The question: ' + question + '\n'
+                                  'The reference answer: ' + reference_answers[question]),
+            langchain_core.messages.HumanMessage(
+                content=answer
+            )
+        ]
+    ).content
+    if chat_answer.startswith("Correct"):
+        return True
+    return chat_answer
